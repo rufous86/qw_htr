@@ -1,6 +1,7 @@
 # StackMix and Blot Augmentations for Handwritten Text Recognition
-paper [arxiv](https://arxiv.org/abs/2108.11667)  [paperswithcode](https://paperswithcode.com/paper/stackmix-and-blot-augmentations-for)
-Datasets Used [IAM](https://paperswithcode.com/dataset/iam) [HKR](https://paperswithcode.com/dataset/hkr) [HKR_Dataset](https://github.com/abdoelsayed2016/HKR_Dataset) [Digital Peter](https://paperswithcode.com/dataset/digital-peter)  
+paper [arxiv](https://arxiv.org/abs/2108.11667)  [paperswithcode](https://paperswithcode.com/paper/stackmix-and-blot-augmentations-for) [StackMix-OCR-github](https://github.com/ai-forever/StackMix-OCR)
+
+Datasets Used [IAM](https://paperswithcode.com/dataset/iam) [HKR](https://paperswithcode.com/dataset/hkr) [HKR-Dataset](https://github.com/abdoelsayed2016/HKR_Dataset) [Digital-Peter](https://paperswithcode.com/dataset/digital-peter) [cyrillic-handwriting-dataset-kaggle](https://www.kaggle.com/datasets/constantinwerner/cyrillic-handwriting-dataset)
 
 В тексте рассматриваются различные методы и подходы к распознаванию рукописного текста (HTR) с использованием моделей глубокого обучения. В начале излагаются первые работы по проблемам распознавания рукописного текста, в которых использовалась комбинация скрытых марковских моделей и рекуррентных нейронных сетей (RNN) или алгоритмы на основе условных случайных полей. Однако было обнаружено, что эти подходы имеют свои недостатки, в частности, невозможность оптимизации сквозной функции потерь.
 
