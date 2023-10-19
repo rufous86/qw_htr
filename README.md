@@ -1,3 +1,7 @@
+[StackMix and Blot Augmentations for Handwritten Text Recognition](#stackmix)  
+[Connectionist Temporal Classification (CTC)](#ctc)  
+
+<a name="stackmix"></a> 
 # StackMix and Blot Augmentations for Handwritten Text Recognition
 paper [arxiv](https://arxiv.org/abs/2108.11667)  [paperswithcode](https://paperswithcode.com/paper/stackmix-and-blot-augmentations-for)
 
@@ -17,6 +21,7 @@ examples [StackMix-OCR-github](https://github.com/ai-forever/StackMix-OCR)
 
 Наконец, в тексте описывается предложенная модель, состоящая из трех частей: модифицированной архитектуры нейронной сети Resnet, нового метода аугментации, имитирующего зачеркнутый текст, и метода значительного увеличения объема обучающих данных за счет генерации нового текста в стиле текущего набора данных. Результаты, полученные при использовании этой архитектуры без дополнительных модификаций, приведены в табл. 4, а влияние дополнения Blot на метрики качества также обсуждается arxiv.org.
 
+<a name="ctc"></a> 
 # Connectionist Temporal Classification (CTC)
 Connectionist Temporal Classification (CTC) - это метод, используемый для обучения рекуррентных нейронных сетей (RNN) для обработки последовательностей данных. Этот метод особенно полезен для задач, где данные представляют собой последовательности, такие как распознавание речи или рукописного текста [ru.wikipedia.org](https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%BA%D1%83%D1%80%D1%80%D0%B5%D0%BD%D1%82%D0%BD%D0%B0%D1%8F_%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%B5%D1%82%D1%8C).
 
