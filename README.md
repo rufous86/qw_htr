@@ -4,6 +4,27 @@ Table of content
 [Connectionist Temporal Classification (CTC)](#ctc)  
 [Attention-basedFullyGatedCNN-BGRU](#Attention_basedFullyGatedCNN_BGRU)  
 
+#  Models
+## Bluche
+The encoder in the Bluche model contains 3x3 Conv layer with8 features, 2x4 Conv layer with 16 features, a 3x3 gated Conv layer,3x3 Conv layer with 32 features, 3x3 gated Conv layer, 2x4 Conv layer with 64 features and 3x3 Conv layer with 128 features. Thedecoder contains 2 bidirectional LSTM layers of 128 units and 128 dense layer between the LSTM layers. Figure 5 shows the Bluche architecture.
+![bluche_architecture.png](/assets/bluche_architecture.png)
+![cer_wer_bluche_puigcerver.png](/assets/cer_wer_bluche_puigcerver.png)
+
+Datasets
+1. handwritten cites in Cyrillic words
+2. HKR
+
+## Puigcerver
+
+The Puigcerver model has three important parts : 1.Convolutional blocks: they include 2-D Conv layer with 3x3 kernal size and 1 horizontal and vertical stride. number of filters is equal to 16n at the n-th layer of Conv.2. Recurrent blocks: Bidirectional 1D-LSTM layers form re- current blocks, that transfer the input image column-wise from left to right and from right to left. The output of the two directions is concatenated depth-wise. 3. Linear layer: the output of recurrent 1D-LSTM blocks are fed to linear layer to predict the output label. Dropout is implemented before the Linear layer to prevent overfitting (also with probability 0.5).
+![piugcerver_architecture.png](/assets/piugcerver_architecture.png)
+![cer_wer_bluche_puigcerver.png](/assets/cer_wer_bluche_puigcerver.png)
+
+Datasets
+1. handwritten cites in Cyrillic words
+2. HKR
+
+
 <a name="stackmix"></a> 
 # StackMix and Blot Augmentations for Handwritten Text Recognition
 paper [arxiv](https://arxiv.org/abs/2108.11667)  [paperswithcode](https://paperswithcode.com/paper/stackmix-and-blot-augmentations-for)
@@ -11,6 +32,57 @@ paper [arxiv](https://arxiv.org/abs/2108.11667)  [paperswithcode](https://papers
 Datasets Used [IAM](https://paperswithcode.com/dataset/iam) [HKR](https://paperswithcode.com/dataset/hkr) [HKR-Dataset](https://github.com/abdoelsayed2016/HKR_Dataset) [Digital-Peter](https://paperswithcode.com/dataset/digital-peter) [cyrillic-handwriting-dataset-kaggle](https://www.kaggle.com/datasets/constantinwerner/cyrillic-handwriting-dataset) [HKR-huggingface](https://huggingface.co/datasets/nastyboget/stackmix_hkr)
 
 examples [StackMix-OCR-github](https://github.com/ai-forever/StackMix-OCR)
+
+### Method
+Our method comprises three parts. Section 3.1 describes
+the modified Resnet neural network architecture we used.
+Sections 3.2 proposes a new augmentation method that sim-
+ulates strikethrough text – Handwritten Blots. Finally, Sec-
+tion 3.3 describes how to significantly increase the amount
+of training data generating new text in the style of the cur-
+rent dataset (StackMix approach).
+
+### Neural Network Architecture
+![stack_mix_architecture.png](assets/stack_mix_architecture.png)
+![resnet_block_architecture.png](assets/resnet_block_architecture.png)
+The neural network underlying the proposed system con-
+sists of three parts: a feature generator, a recurrent network
+to account for the order of the features, and the classifier
+that outputs the probability of each character.
+As a function generator, various network architectures
+were tested, and the final choice fell on Resnet (Fig. 2). We
+took only three first blocks from Resnet-34 and replaced
+the stride parameter in the first layer with 1 to increase the
+”width” of the objects. One Resnet block (Figure 3) con-
+sisted of 3, 4, and 6 residual blocks with 64, 128, and 256
+output layers, respectively.
+After the features were extracted, they were averaged
+through the AdaptiveAvgPool2d layer and fed into the three
+BiLSTM layers to deal with feature sequences. As a final
+classifier, we use two fully connected layers with GELU
+and dropout between them.
+The results achieved using the described architecture
+without any additional modifications are shown in the
+”base” row of Table 4.
+
+### Blot Augmentation
+![blot_augmentation.png](assets/blot_augmentation.png)
+
+### StackMix
+The StackMix Algorithm is a method used to create new images from text input, using parts of images from a training dataset. The algorithm uses nltk MWETokenizer for tokenization, which processes tokenized text and merges multi-word expressions into single tokens. These collections of multi-word expressions are obtained from the training dataset. The algorithm then matches each token with a part of an image from the training data, and stacks these pieces together to form a complete image, maintaining the correct order of the tokens. 
+
+The algorithm has been found to significantly increase the quality of recognition, despite visible places where tokens were glued together. The alignment and selection of samples to increase the realism of the generated string did not lead to an increase in metrics in experiments. However, with certain improvements, this algorithm may be used for the realistic generation of new documents. 
+
+In a test, the algorithm was used to generate pages of texts from different sources, including paragraphs from the first chapter of a Harry Potter book. The results suggest that it is possible to generate different texts with different styles and fonts. For models of English language, the original Harry Potter book was used, and for models that had Cyrillic symbols, the Russian version of the Harry Potter book was used.
+![example_stackmix.png](assets/example_stackmix.png)
+
+### Datasets
+Bentham, The IAM, Digital Peter, HKR Dataset, Saint Gall
+
+### Metrics
+![stackmix_cer_drawing.png](assets/stackmix_cer_drawing.png)
+![stackmix_benchmark.png](assets/stackmix_benchmark.png)
+![cer_wer_formules.png](assets/cer_wer_formules.png)
 
 В тексте рассматриваются различные методы и подходы к распознаванию рукописного текста (HTR) с использованием моделей глубокого обучения. В начале излагаются первые работы по проблемам распознавания рукописного текста, в которых использовалась комбинация скрытых марковских моделей и рекуррентных нейронных сетей (RNN) или алгоритмы на основе условных случайных полей. Однако было обнаружено, что эти подходы имеют свои недостатки, в частности, невозможность оптимизации сквозной функции потерь.
 
