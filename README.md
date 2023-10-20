@@ -16,7 +16,8 @@ Datasets
 
 ## Puigcerver
 
-The Puigcerver model has three important parts : 1.Convolutional blocks: they include 2-D Conv layer with 3x3 kernal size and 1 horizontal and vertical stride. number of filters is equal to 16n at the n-th layer of Conv.2. Recurrent blocks: Bidirectional 1D-LSTM layers form re- current blocks, that transfer the input image column-wise from left to right and from right to left. The output of the two directions is concatenated depth-wise. 3. Linear layer: the output of recurrent 1D-LSTM blocks are fed to linear layer to predict the output label. Dropout is implemented before the Linear layer to prevent overfitting (also with probability 0.5).
+The Puigcerver model has three important parts : 1.Convolutional blocks: they include 2-D Conv layer with 3x3 kernal size and 1 horizontal and vertical stride. number of filters is equal to 16n at the n-th layer of Conv.2. Recurrent blocks: Bidirectional 1D-LSTM layers form re- current blocks, that transfer the input image column-wise from left to right and from right to left. The output of the two directions is concatenated depth-wise. 3. Linear layer: the output of recurrent 1D-LSTM blocks are fed to linear layer to predict the output label. Dropout is implemented before the Linear layer to prevent overfitting (also with probability 0.5).  
+
 ![piugcerver_architecture.png](/assets/piugcerver_architecture.png)
 ![cer_wer_bluche_puigcerver.png](/assets/cer_wer_bluche_puigcerver.png)
 
